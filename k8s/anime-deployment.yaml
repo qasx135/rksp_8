@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anime-service
+  namespace: microservices-pr8
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: anime-service
+  template:
+    metadata:
+      labels:
+        app: anime-service
+    spec:
+      containers:
+        - name: anime-service
+          image: pr8-anime-service:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DB_PATH
+              value: "/data/watched.db"
+            - name: USER_SERVICE_URL
+              value: "http://user-service:8080"
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          ports:
+            - containerPort: 8080
+      volumes:
+        - name: data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: anime-service
+  namespace: microservices-pr8
+spec:
+  selector:
+    app: anime-service
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
