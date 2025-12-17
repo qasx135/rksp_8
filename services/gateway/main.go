@@ -133,7 +133,7 @@ func main() {
 
 	// защищённые маршруты
 	r.PathPrefix("/users").Handler(gw.authMiddleware(http.HandlerFunc(gw.userHandler)))
-	r.PathPrefix("/animes").Handler(gw.authMiddleware(http.HandlerFunc(gw.animeHandler)))
+	r.PathPrefix("/anime").Handler(gw.authMiddleware(http.HandlerFunc(gw.animeHandler)))
 
 	addr := ":8080"
 	log.Printf("Gateway listening on %s", addr)

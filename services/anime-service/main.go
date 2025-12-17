@@ -56,8 +56,8 @@ func main() {
 	}
 
 	r := mux.NewRouter()
-	r.HandleFunc("/", srv.handleAddAnime).Methods(http.MethodPost)
-	r.HandleFunc("/my", srv.handleMyAnimes).Methods(http.MethodGet)
+	r.HandleFunc("/add-anime", srv.handleAddAnime).Methods(http.MethodPost)
+	r.HandleFunc("/my-animes", srv.handleMyAnimes).Methods(http.MethodGet)
 
 	addr := ":8080"
 	log.Printf("anime-service listening on %s", addr)

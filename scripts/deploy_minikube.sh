@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-NAMESPACE="microservices-pr8"
+NAMESPACE="prac8"
 MINIKUBE_PROFILE=${MINIKUBE_PROFILE:-minikube}
 
 echo "[*] Using minikube profile: $MINIKUBE_PROFILE"
@@ -16,7 +16,7 @@ echo "[*] Building Docker images..."
 docker build -t pr8-gateway:latest "$ROOT_DIR/services/gateway"
 docker build -t pr8-auth-service:latest "$ROOT_DIR/services/auth-service"
 docker build -t pr8-user-service:latest "$ROOT_DIR/services/user-service"
-docker build -t pr8-order-service:latest "$ROOT_DIR/services/anime-service"
+docker build -t pr8-anime-service:latest "$ROOT_DIR/services/anime-service"
 
 echo "[*] Applying Kubernetes manifests..."
 kubectl apply -f "$ROOT_DIR/k8s/namespace.yaml"

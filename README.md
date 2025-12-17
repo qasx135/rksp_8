@@ -132,16 +132,16 @@ curl -H "Authorization: Bearer $TOKEN" "$GATEWAY_URL/users/me"
 4. **добавления аниме**
 
 ```bash
-curl -X POST "$GATEWAY_URL/orders" \
+curl -X POST "$GATEWAY_URL/anime/add-anime" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"anime":"exampleName","folder_name":"watched"}'
 ```
 
-5. **Просмотр своих заказов**
+5. **Просмотр своих аниме**
 
 ```bash
-curl -H "Authorization: Bearer $TOKEN" "$GATEWAY_URL/animes/my"
+curl -H "Authorization: Bearer $TOKEN" "$GATEWAY_URL/anime/my-animes"
 ```
 
 Все команды выше выполняются **через gateway** и проходят полную цепочку микросервисов.
